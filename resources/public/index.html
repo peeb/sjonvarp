@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hraðskrá</title>
+    <meta name="author" content="Paul Burt">
+    <meta name="description" content="Icelandic daily TV schedule">
+    <link href="favicon.ico" rel="icon" type="image/x-icon">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/litera/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="main"></div>
+    <script src="js/main.js"></script>
+    <script>
+      var domElement = document.getElementById('main');
+      tv.core.mount(domElement);
+    </script>
+  </body>
+</html>
