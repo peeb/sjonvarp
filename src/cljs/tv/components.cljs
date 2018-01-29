@@ -13,7 +13,7 @@
                   url (string/format "#/%s" (name id))]
               [:li.nav-item {:key (name id)}
                [:a.nav-link.text-uppercase {:class (if active? "active")
-                                            :href url}
+                                            :href  url}
                 [:strong station-name]]]))
           stations)]])
 
@@ -23,7 +23,8 @@
   (let [background (impl/css-gradient color)]
     [:header.jumbotron {:style {:background background}}
      [:div.container
-      [:h1 {:style {:color "white"}}
+      [:h1 {:style {:color     "white"
+                    :font-size "3em"}}
        [:strong (string/format "%s í dag" station-name)]]]]))
 
 (rum/defc Show < rum/static

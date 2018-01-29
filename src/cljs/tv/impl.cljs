@@ -9,10 +9,10 @@
             [cuerdas.core :as string]))
 
 (def ^:private stations
-  {:ruv {:station-name "RÚV" :color "hotpink"}
-   :stod2 {:station-name "Stöð 2" :color "teal"}
+  {:ruv      {:station-name "RÚV"        :color "hotpink"}
+   :stod2    {:station-name "Stöð 2"     :color "teal"}
    :stod2bio {:station-name "Stöð 2 Bíó" :color "firebrick"}
-   :stod3 {:station-name "Stöð 3" :color "darkorchid"}})
+   :stod3    {:station-name "Stöð 3"     :color "darkorchid"}})
 
 (defonce db (atom {:active-id :ruv :stations stations}))
 
@@ -107,7 +107,7 @@
   (go
     (let [{{:keys [results]} :body} (<! (fetch! id))]
       (when (seq results)
-        (let [updated (update-schedule results id)
+        (let [updated  (update-schedule results id)
               schedule (spec/conform ::schedule updated)]
           (when-not (= schedule ::spec/invalid)
             (swap! db assoc-in [:stations id :schedule] schedule)))))))
