@@ -35,8 +35,8 @@
 
 (defn date-string?
   "Predicate to determine if the given string represents a valid date"
-  [date-string]
-  (->> date-string
+  [s]
+  (->> s
        (tf/parse date-format)
        t/date?))
 

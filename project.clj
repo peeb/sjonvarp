@@ -14,7 +14,7 @@
                  [cljs-http "0.1.44"]
                  [com.andrewmcveigh/cljs-time "0.5.2"]
                  [funcool/cuerdas "2.0.5"]
-                 [rum "0.11.0"]]
+                 [rum "0.11.1"]]
   :plugins [[lein-cljsbuild "1.1.7"]]
   :profiles {:dev {:clean-targets ^{:protect false} ["figwheel_server.log"
                                                      "resources/public/js"
