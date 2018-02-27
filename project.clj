@@ -9,7 +9,7 @@
                 :source-paths ["src/cljs"]}}}
   :description "SPA showing what's on Icelandic TV today"
   :dependencies [[org.clojure/clojure "1.9.0"]
-                 [org.clojure/clojurescript "1.9.946"]
+                 [org.clojure/clojurescript "1.10.64"]
                  [bidi "2.1.3"]
                  [cljs-http "0.1.44"]
                  [com.andrewmcveigh/cljs-time "0.5.2"]
