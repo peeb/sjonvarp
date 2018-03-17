@@ -9,7 +9,7 @@
                 :source-paths ["src/cljs"]}}}
   :description "SPA showing what's on Icelandic TV today"
   :dependencies [[org.clojure/clojure "1.9.0"]
-                 [org.clojure/clojurescript "1.10.64"]
+                 [org.clojure/clojurescript "1.10.145"]
                  [bidi "2.1.3"]
                  [cljs-http "0.1.44"]
                  [com.andrewmcveigh/cljs-time "0.5.2"]
@@ -31,9 +31,9 @@
                                             :open-urls ["http://localhost:3449/#/ruv"]}
                                  :source-paths ["test"]}}}
                    :dependencies [[org.clojure/tools.nrepl "0.2.13"]
-                                  [figwheel-sidecar "0.5.14"]
+                                  [figwheel-sidecar "0.5.15"]
                                   [com.cemerick/piggieback "0.2.2"]]
-                   :plugins [[lein-figwheel "0.5.14"]]
+                   :plugins [[lein-figwheel "0.5.15"]]
                    :source-paths ["dev" "src/cljs"]}
              :prod {:cljsbuild {:builds
                                 {:client
