@@ -87,12 +87,12 @@ This command will also pop open a browser window running the application.
 
 Note that some unit tests are included and will run in the browser console
 every time the application code is saved. Tests can be found in the
-[`tv.tests`][test/cljs/tv/tests.cljs] namespace.
+[`tv.tests`](test/cljs/tv/tests.cljs) namespace.
 
 ### Live SCSS development
 
 Enter the following command in a separate terminal to watch and compile
-the [SCSS][] styles found in [`src/scss/styles.scss`][src/scss/styles.css].
+the [SCSS][] styles found in [`src/scss/styles.scss`](src/scss/styles.css).
 
 ```shell
 lein sass
