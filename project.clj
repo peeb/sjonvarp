@@ -11,7 +11,7 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [bidi "2.1.3"]
-                 [cljs-http "0.1.44"]
+                 [cljs-http "0.1.45"]
                  [com.andrewmcveigh/cljs-time "0.5.2"]
                  [funcool/cuerdas "2.0.5"]
                  [rum "0.11.2"]]
