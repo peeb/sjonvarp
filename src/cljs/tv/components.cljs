@@ -6,7 +6,7 @@
 (rum/defc Stations < rum/static
   "Render station navigation links"
   [stations active-id color]
-  [:nav.navbar
+  [:nav.navbar.navbar-light.bg-light.sticky-top
    [:ul.nav.nav-pills.container
     (mapv (fn [[id {:keys [station-name]}]]
             (let [active? (= active-id id)
