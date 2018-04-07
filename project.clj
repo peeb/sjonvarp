@@ -1,6 +1,6 @@
 (defproject tv "0.1.0-SNAPSHOT"
   :aliases {"release" ["with-profile" "prod" "do" "clean," "cljsbuild" "once"]}
-  :author "Paul Burt <paul.burt@gmail.com>"
+  :author "Paul Burt <peeb@protonmail.com>"
   :cljsbuild {:builds
               {:client
                {:compiler {:compiler-stats true
@@ -15,6 +15,7 @@
                  [com.andrewmcveigh/cljs-time "0.5.2"]
                  [funcool/cuerdas "2.0.5"]
                  [rum "0.11.2"]]
+  :jvm-opts ["--add-modules" "java.xml.bind"]
   :plugins [[lein-cljsbuild "1.1.7"]]
   :profiles {:dev {:clean-targets ^{:protect false} ["figwheel_server.log"
                                                      "resources/public/js"
@@ -27,9 +28,8 @@
                                             :output-dir "resources/public/js/out"
                                             :source-map true
                                             :source-map-timestamp true}
-                                 :figwheel {:on-jsload "tv.tests/run"
-                                            :open-urls ["http://localhost:3449/#/ruv"]}
-                                 :source-paths ["test"]}}}
+                                 :figwheel {:open-urls ["http://localhost:3449/#/ruv"]}
+                                 :source-paths ["test/cljs"]}}}
                    :dependencies [[org.clojure/tools.nrepl "0.2.13"]
                                   [figwheel-sidecar "0.5.15"]
                                   [com.cemerick/piggieback "0.2.2"]]

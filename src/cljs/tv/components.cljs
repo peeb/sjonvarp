@@ -23,9 +23,12 @@
   (let [background (impl/css-gradient color)]
     [:header.jumbotron {:style {:background background}}
      [:div.container
-      [:h1 {:style {:color     "white"
-                    :font-size "3em"}}
-       [:strong (string/format "%s í dag" station-name)]]]]))
+      [:h1 {:style {:color       "white"
+                    :font-size   "3em"
+                    :font-weight 900}}
+       (string/format "%s í dag" station-name)]]]))
+
+;;; NowShowing component
 
 (rum/defc Show < rum/static
   "Render an individual TV show"
@@ -48,7 +51,7 @@
               (-> (Show show color)
                   (rum/with-key reactKey)))
             schedule)
-      [:p [:em "Loading..."]])])
+      [:p [:em "Hleð..."]])])
 
 (rum/defc Root < rum/reactive impl/schedule-loader
   "One component to rule them all"
