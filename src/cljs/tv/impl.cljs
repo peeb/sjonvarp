@@ -102,12 +102,12 @@
 
 (defn- fetch-schedule!
   "Fetch schedule data for the given station ID.
-  Update application state db if the data conform."
+  Update application state db if the data conform to spec."
   [id]
   (go
     (let [{{:keys [results]} :body} (<! (fetch! id))]
       (when (seq results)
-        (let [updated  (update-schedule results id)
+        (let [updated (update-schedule results id)
               schedule (spec/conform ::schedule updated)]
           (when-not (= schedule ::spec/invalid)
             (swap! db assoc-in [:stations id :schedule] schedule)))))))

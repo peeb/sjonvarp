@@ -1,6 +1,7 @@
 /.*
 !/.gitignore
-/dev-resources/
-/resources/public/js/
-/target/
+/dev-resources
+/resources/public/js
+/target
 /figwheel_server.log
+/tv.iml
