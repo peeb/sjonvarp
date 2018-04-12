@@ -28,7 +28,6 @@
                     :font-weight 900}}
        (string/format "%s í dag" station-name)]]]))
 
-;; TODO NowShowing component
 (rum/defc NowShowing < rum/static
   []
   [:section])
