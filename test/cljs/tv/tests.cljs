@@ -1,6 +1,6 @@
 (ns tv.tests
   (:require [clojure.string :as string]
-            [clojure.test :refer [are deftest is run-tests testing]]
+            [clojure.test :refer [are deftest is testing]]
             [bidi.bidi :as bidi]
             [tv.impl :as impl]))
 
@@ -40,6 +40,3 @@
 (deftest test-date-string
   (testing "Date is valid"
     (is (= (impl/date-string? (:startTime show)) true))))
-
-(defn run []
-  (run-tests))

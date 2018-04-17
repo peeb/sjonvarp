@@ -15,11 +15,8 @@
                  [com.andrewmcveigh/cljs-time "0.5.2"]
                  [funcool/cuerdas "2.0.5"]
                  [rum "0.11.2"]]
-  :jvm-opts ["--add-modules" "java.xml.bind"]
   :plugins [[lein-cljsbuild "1.1.7"]]
-  :profiles {:dev {:clean-targets ^{:protect false} ["figwheel_server.log"
-                                                     "resources/public/js"
-                                                     :target-path]
+  :profiles {:dev {:clean-targets ^{:protect false} ["figwheel_server.log" "resources/public/js" :target-path]
                    :cljsbuild {:builds
                                {:client
                                 {:compiler {:asset-path "js/out"
@@ -28,13 +25,12 @@
                                             :output-dir "resources/public/js/out"
                                             :source-map true
                                             :source-map-timestamp true}
-                                 :figwheel {:open-urls ["http://localhost:3449/#/ruv"]}
-                                 :source-paths ["test/cljs"]}}}
+                                 :figwheel {:open-urls ["http://localhost:3449/#/ruv"]}}}}
                    :dependencies [[org.clojure/tools.nrepl "0.2.13"]
                                   [figwheel-sidecar "0.5.15"]
                                   [com.cemerick/piggieback "0.2.2"]]
                    :plugins [[lein-figwheel "0.5.15"]]
-                   :source-paths ["dev" "src/cljs"]}
+                   :source-paths ["dev" "src/cljs" "test/cljs"]}
              :prod {:cljsbuild {:builds
                                 {:client
                                  {:compiler {:closure-defines {"goog.DEBUG" false}

@@ -70,11 +70,11 @@
 
 (spec/def ::maybe-string (spec/or :blank string/blank? :string string?))
 
-(spec/def ::description ::maybe-string)
+(spec/def ::description   ::maybe-string)
 (spec/def ::originalTitle ::maybe-string)
-(spec/def ::reactKey string?)
-(spec/def ::startTime date-string?)
-(spec/def ::title string?)
+(spec/def ::reactKey      string?)
+(spec/def ::startTime     date-string?)
+(spec/def ::title         string?)
 
 (spec/def ::show
   (spec/keys :req-un [::reactKey ::startTime ::title]
@@ -96,8 +96,7 @@
   "Update shows in the given schedule with additional information"
   [schedule id]
   (map-indexed (fn [idx show]
-                 (assoc (map->Show show)
-                        :reactKey (string/format "%s/%s" (name id) (inc idx))))
+                 (assoc (map->Show show) :reactKey (str (name id) (inc idx))))
                schedule))
 
 (defn- fetch-schedule!
