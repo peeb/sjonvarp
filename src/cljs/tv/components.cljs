@@ -10,7 +10,7 @@
    [:ul.nav.nav-pills.container
     (mapv (fn [[id {:keys [station-name]}]]
             (let [active? (= active-id id)
-                  url (string/format "#/%s" (name id))]
+                  url     (string/format "#/%s" (name id))]
               [:li.nav-item {:key (name id)}
                [:a.nav-link.text-uppercase {:class (if active? "active")
                                             :href  url}
