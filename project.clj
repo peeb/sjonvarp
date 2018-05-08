@@ -27,9 +27,9 @@
                                             :source-map-timestamp true}
                                  :figwheel {:open-urls ["http://localhost:3449/#/ruv"]}}}}
                    :dependencies [[org.clojure/tools.nrepl "0.2.13"]
-                                  [figwheel-sidecar "0.5.15"]
+                                  [figwheel-sidecar "0.5.16"]
                                   [com.cemerick/piggieback "0.2.2"]]
-                   :plugins [[lein-figwheel "0.5.15"]]
+                   :plugins [[lein-figwheel "0.5.16"]]
                    :source-paths ["dev" "src/cljs" "test/cljs"]}
              :prod {:cljsbuild {:builds
                                 {:client
