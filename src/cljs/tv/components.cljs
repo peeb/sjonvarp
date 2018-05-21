@@ -1,7 +1,8 @@
 (ns tv.components
   (:require [cuerdas.core :as string]
             [rum.core :as rum]
-            [tv.impl :as impl]))
+            [tv.impl :refer [db show-description show-time show-title]]
+            [tv.mixins :refer [schedule-loader]]))
 
 (rum/defc Stations < rum/static
   "Render station navigation links"
@@ -15,12 +16,17 @@
                [:a.nav-link.text-uppercase {:class (if active? "active")
                                             :href  url}
                 [:strong station-name]]]))
-          stations)]])
+         stations)]])
+
+(defn- gradient
+  [from-color & [to-color]]
+  (string/format "linear-gradient(to bottom right, %s, %s)"
+                 from-color (or to-color "white")))
 
 (rum/defc Header < rum/static
   "Render the page header"
   [station-name color]
-  (let [background (impl/css-gradient color)]
+  (let [background (gradient color)]
     [:header.jumbotron {:style {:background background}}
      [:div.container
       [:h1 {:style {:color       "white"
@@ -34,27 +40,27 @@
   [:div.row
    [:div.col-sm-2
     [:h3.font-weight-light {:style {:color color}}
-     [:em (impl/show-time show)]]]
+     [:em (show-time show)]]]
    [:div.col-sm-10.show-title
-    [:h3 (impl/show-title show)]
+    [:h3 (show-title show)]
     [:p.text-muted.show-description
-     (impl/show-description show)]]])
+     (show-description show)]]])
 
 (rum/defc Schedule < rum/static
   "Render a schedule of TV shows"
   [schedule color]
   [:div.container
-    (if (seq schedule)
-      (mapv (fn [{:keys [reactKey] :as show}]
-              (-> (Show show color)
-                  (rum/with-key reactKey)))
-            schedule)
-      [:p [:em "Hleð..."]])])
+   (if (seq schedule)
+     (mapv (fn [{:keys [reactKey] :as show}]
+             (-> (Show show color)
+                 (rum/with-key reactKey)))
+           schedule)
+     [:p [:em "Hleð..."]])])
 
-(rum/defc Root < rum/reactive impl/schedule-loader
+(rum/defc Root < rum/reactive schedule-loader
   "One component to rule them all"
   []
-  (let [{:keys [active-id stations]} (rum/react impl/db)
+  (let [{:keys [active-id stations]}          (rum/react db)
         {:keys [color schedule station-name]} (get stations active-id)]
     (conj [:div#components]
           (Stations stations active-id color)

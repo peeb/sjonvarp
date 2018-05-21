@@ -16,7 +16,7 @@
                  [funcool/cuerdas "2.0.5"]
                  [rum "0.11.2"]]
   :plugins [[lein-cljsbuild "1.1.7"]]
-  :profiles {:dev {:clean-targets ^{:protect false} ["figwheel_server.log" "resources/public/js" :target-path]
+  :profiles {:dev {:clean-targets ^{:protect false} [:target-path "figwheel_server.log" "resources/public/js"]
                    :cljsbuild {:builds
                                {:client
                                 {:compiler {:asset-path "js/out"
@@ -25,7 +25,9 @@
                                             :output-dir "resources/public/js/out"
                                             :source-map true
                                             :source-map-timestamp true}
-                                 :figwheel {:open-urls ["http://localhost:3449/#/ruv"]}}}}
+                                 :figwheel {:on-jsload "tv.tests/run"
+                                            :open-urls ["http://localhost:3449/#/ruv"]}
+                                 :source-paths ["test/cljs"]}}}
                    :dependencies [[org.clojure/tools.nrepl "0.2.13"]
                                   [figwheel-sidecar "0.5.16"]
                                   [com.cemerick/piggieback "0.2.2"]]
