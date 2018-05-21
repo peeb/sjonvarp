@@ -1,7 +1,5 @@
 (ns tv.tests
-  (:require-macros [cljs.core.async.macros :refer [go]])
-  (:require [cljs.core.async :refer [<!]]
-            [cljs.test :refer-macros [are async deftest is run-tests testing]]
+  (:require [cljs.test :refer-macros [are async deftest is run-tests testing]]
             [bidi.bidi :as bidi]
             [tv.core :refer [routes]]
             [tv.impl :refer [fetch! map->Show show-description show-time]]
@@ -35,9 +33,8 @@
 (deftest api-test
   (testing "Connection to API works"
     (async done
-      (go
-        (is (= (:status (fetch! :ruv))) 200)
-        (done)))))
+      (is (= (:status (fetch! :ruv))) 200)
+      (done))))
 
 (deftest show-description-test
   (testing "Trailing 'e.' is trimmed from show description"
