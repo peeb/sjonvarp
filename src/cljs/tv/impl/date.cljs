@@ -2,9 +2,9 @@
   (:require [cljs-time.core :refer [date?]]
             [cljs-time.format :refer [formatter parse unparse]]))
 
-(def date-format (formatter "YYYY-MM-DD HH:mm:ss"))
+(def ^:private date-format (formatter "YYYY-MM-DD HH:mm:ss"))
 
-(def time-format (formatter "HH:mm"))
+(def ^:private time-format (formatter "HH:mm"))
 
 (defn date-string?
   "Predicate to determine if the given string represents a valid date"

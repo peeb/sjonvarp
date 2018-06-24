@@ -11,10 +11,10 @@
    [:ul.nav.nav-pills.container
     (mapv (fn [[id {:keys [station-name]}]]
             (let [active? (= active-id id)
-                  url     (string/format "#/%s" (name id))]
+                  url (string/format "#/%s" (name id))]
               [:li.nav-item {:key (name id)}
                [:a.nav-link.text-uppercase {:class (if active? "active")
-                                            :href  url}
+                                            :href url}
                 [:strong station-name]]]))
          stations)]])
 
@@ -29,8 +29,8 @@
   (let [background (gradient color)]
     [:header.jumbotron {:style {:background background}}
      [:div.container
-      [:h1 {:style {:color       "white"
-                    :font-size   "3em"
+      [:h1 {:style {:color "white"
+                    :font-size "3em"
                     :font-weight 900}}
        (string/format "%s í dag" station-name)]]]))
 
@@ -60,7 +60,7 @@
 (rum/defc Root < rum/reactive schedule-loader
   "One component to rule them all"
   []
-  (let [{:keys [active-id stations]}          (rum/react db)
+  (let [{:keys [active-id stations]} (rum/react db)
         {:keys [color schedule station-name]} (get stations active-id)]
     (conj [:div#components]
           (Stations stations active-id color)

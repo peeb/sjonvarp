@@ -7,14 +7,14 @@
             [tv.impl.date :refer [date-string? time-string]]))
 
 (def ^:private stations
-  {:ruv      {:station-name "RÚV"        :color "hotpink"}
-   :stod2    {:station-name "Stöð 2"     :color "teal"}
+  {:ruv {:station-name "RÚV" :color "hotpink"}
+   :stod2 {:station-name "Stöð 2" :color "teal"}
    :stod2bio {:station-name "Stöð 2 Bíó" :color "firebrick"}
-   :stod3    {:station-name "Stöð 3"     :color "darkorchid"}})
+   :stod3 {:station-name "Stöð 3" :color "darkorchid"}})
 
 (defonce ^{:doc "Application state container"} db
   (atom {:active-id :ruv
-         :stations  stations}))
+         :stations stations}))
 
 (defn ^:private tidy-description
   "Remove trailing 'e.' from end of description strings"
@@ -42,16 +42,17 @@
   (show-title [_]
     (let [[tag value] originalTitle]
       (str title
-           (when-not (= tag :blank)
+           (when-not (or (= tag :blank)
+                         (= (string/lower value) (string/lower title)))
              (string/format " / %s" value))))))
 
 (s/def ::maybe-string (s/or :blank string/blank? :string string?))
 
-(s/def ::description   ::maybe-string)
+(s/def ::description ::maybe-string)
 (s/def ::originalTitle ::maybe-string)
-(s/def ::reactKey      string?)
-(s/def ::startTime     date-string?)
-(s/def ::title         string?)
+(s/def ::reactKey string?)
+(s/def ::startTime date-string?)
+(s/def ::title string?)
 
 (s/def ::show
   (s/keys :req-un [::reactKey ::startTime ::title]
@@ -87,7 +88,7 @@
   (go
     (let [{{:keys [results]} :body} (<! (fetch! id))]
       (when (seq results)
-        (let [updated  (update-schedule results id)
+        (let [updated (update-schedule results id)
               schedule (s/conform ::schedule updated)]
           (when-not (= schedule ::s/invalid)
             (swap! db assoc-in [:stations id :schedule] schedule)))))))
