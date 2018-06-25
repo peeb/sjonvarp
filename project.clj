@@ -2,7 +2,7 @@
   :description "SPA showing what's on Icelandic TV today"
   :author "Paul Burt <peeb@protonmail.com>"
   :dependencies [[org.clojure/clojure "1.9.0"]
-                 [org.clojure/clojurescript "1.10.335"]
+                 [org.clojure/clojurescript "1.10.339"]
                  [bidi "2.1.3"]
                  [cljs-http "0.1.45"]
                  [com.andrewmcveigh/cljs-time "0.5.2"]
