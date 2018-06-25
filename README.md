@@ -87,7 +87,7 @@ This command will also pop open a browser window running the application.
 
 Note that some unit tests are included and will run in the browser console
 every time the application code is saved. Tests can be found in the
-[`tv.tests`](test/cljs/tv/tests.cljs) namespace.
+[`tv.test.impl`](test/cljs/tv/test/impl.cljs) namespace.
 
 ### Live SCSS development
 
