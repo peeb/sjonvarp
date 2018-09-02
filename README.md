@@ -9,8 +9,6 @@
 A single-page, data-driven ClojureScript web app which shows a daily schedule
 of shows on four of the principal Icelandic TV stations.
 
-A live demo can be found [here][demo].
-
 In this learning session we will consider:
 
 * JavaScript as a **runtime**
@@ -61,8 +59,12 @@ No Brunch. No Yeoman. No Uglify. Relax! \o/
 A basic grasp of Clojure code & data structures is useful (but not essential)
 for this session. JavaScript domain knowledge will also be beneficial.
 
-To build this app yourself, you will need to have a recent [JVM][] installed
-and the [Clojure][] build tool [Leiningen][].
+To build this app yourself, you will need to have a recent [JVM][] installed.
+[Clojure][] itself can be installed as follows:
+
+```shell
+brew install clojure
+```
 
 ### Build and run
 
@@ -70,17 +72,17 @@ Once everything is installed, type the following to create an optimized,
 production build of the app:
 
 ```shell
-lein release
+clojure -A:prod
 ```
 
 Now open `resources/public/index.html` in your web browser.
 
 ### Live ClojureScript development
 
-You can also run the app in development using [Figwheel][] as follows:
+You can run the app in development using [Figwheel][] as follows:
 
 ```shell
-lein figwheel
+cljojure -A:dev
 ```
 
 This command will also pop open a browser window running the application.
@@ -88,15 +90,6 @@ This command will also pop open a browser window running the application.
 Note that some unit tests are included and will run in the browser console
 every time the application code is saved. Tests can be found in the
 [`tv.test.impl`](test/cljs/tv/test/impl.cljs) namespace.
-
-### Live SCSS development
-
-Enter the following command in a separate terminal to watch and compile
-the [SCSS][] styles found in [`src/scss/styles.scss`](src/scss/styles.css).
-
-```shell
-lein sass
-```
 
 ## Who
 
@@ -115,16 +108,13 @@ ClojureScript.
 [clojure]: http://clojure.org/
 [clojurescript]: https://clojurescript.org/
 [core.async]: https://github.com/clojure/core.async
-[demo]: https://public-vjhonmvsgw.now.sh/#/ruv
 [elm]: http://elm-lang.org/
-[figwheel]: https://github.com/bhauman/lein-figwheel
+[figwheel]: https://github.com/bhauman/figwheel-main
 [jvm]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-[leiningen]: http://leiningen.org/
-[pb]: https://twitter.com/pycurious
+[pb]: https://twitter.com/bangsabassi
 [purescript]: http://www.purescript.org/
 [react]: https://github.com/facebook/react
 [rum]: https://github.com/tonsky/rum
 [clojurescript for skeptics]: https://www.youtube.com/watch?v=gsffg5xxFQI
 [spec]: http://clojure.org/about/spec
 [yes]: https://news.ycombinator.com/item?id=3067434
-[scss]: http://sass-lang.com/

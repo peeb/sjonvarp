@@ -1,0 +1,10 @@
+{:main tv.core
+ :asset-path "js"
+ :compiler-stats true
+ :optimizations :none
+ :output-dir "target/public/js"
+ :output-to "resources/public/js/main.js"
+ :parallel-build true
+ :pretty-print true
+ :source-map true
+ :source-map-timestamp true}

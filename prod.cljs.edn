@@ -1,0 +1,7 @@
+{:main tv.core
+ :closure-defines {"goog.DEBUG" false}
+ :compiler-stats true
+ :elide-asserts true
+ :optimizations :advanced
+ :output-to "resources/public/js/main.js"
+ :parallel-build true}
