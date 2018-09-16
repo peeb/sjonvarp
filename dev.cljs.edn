@@ -5,6 +5,5 @@
  :output-dir "target/public/js"
  :output-to "resources/public/js/main.js"
  :parallel-build true
- :pretty-print true
  :source-map true
  :source-map-timestamp true}

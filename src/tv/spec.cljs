@@ -3,10 +3,28 @@
             [cuerdas.core :as string]
             [tv.date :as date]))
 
-(s/def ::possible-string (s/or :blank string/blank? :string string?))
+(def ^:private repeat-pattern #".[ ]?e.$")
 
-(s/def ::description ::possible-string)
-(s/def ::originalTitle ::possible-string)
+(defn ^:private repeat? [s]
+  (boolean (re-matches repeat-pattern s)))
+
+(def ^:private not-repeat? (complement repeat?))
+
+(s/def ::not-repeat (s/and string? not-repeat?))
+
+(def clean
+  (comp string/trim
+        string/clean
+        #(string/replace % repeat-pattern ".")))
+
+(s/fdef clean
+  :args (s/cat :s string?)
+  :ret ::not-repeat)
+
+(s/def ::maybe-string (s/or :blank string/blank? :string string?))
+
+(s/def ::description ::maybe-string)
+(s/def ::originalTitle ::maybe-string)
 (s/def ::startTime ::date/date-string)
 (s/def ::title string?)
 
